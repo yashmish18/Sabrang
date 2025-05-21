@@ -1,4 +1,4 @@
-'use client'; // This makes the page a client component in Next.js 13+
+'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -12,71 +12,73 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Basic validation
     if (!name.trim() || !phone.trim()) {
-      setError('Please enter both name and phone number.');
-      return;
-    }
-    if (!/^\d{10}$/.test(phone)) {
-      setError('Phone number must be 10 digits.');
+      setError('⚠️ Please enter both name and phone number.');
       return;
     }
 
-    // Save user info to localStorage (or sessionStorage)
+    if (!/^\d{10}$/.test(phone)) {
+      setError('⚠️ Phone number must be 10 digits.');
+      return;
+    }
+
+    // Store in localStorage
     localStorage.setItem('userName', name.trim());
     localStorage.setItem('userPhone', phone.trim());
 
-    // Redirect to event details page (adjust route if needed)
+    // Redirect to event details
     router.push('/event-details');
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '40px auto', padding: '20px', boxShadow: '0 0 10px #aaa', borderRadius: '8px', backgroundColor: '#f0f8ff', fontFamily: 'Arial, sans-serif' }}>
-      <h2 className="text-3xl sm:text-4xl font-bold text-center text-black mb-8">Login</h2>
-      <form onSubmit={handleSubmit} noValidate>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div className="min-h-screen bg-gradient-to-br from-[#0f172a] to-[#1e293b] flex items-center justify-center px-4">
+      <div className="bg-white/5 backdrop-blur-md p-10 rounded-2xl shadow-2xl w-full max-w-md border border-white/10">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center text-white mb-8">
+          Login to <span className="text-pink-500">Sabrang 2025</span>
+        </h2>
 
-        <label htmlFor="name" style={{color: 'black'}}>Enter your name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          placeholder="Name"
-          required
-          style={{ width: '100%', padding: '10px', margin: '8px 0', borderRadius: '5px', border: '1px solid #ccc',color: 'grey' }}
-        />
+        <form onSubmit={handleSubmit} noValidate>
+          {error && (
+            <p className="text-red-400 text-sm font-semibold mb-4 text-center">
+              {error}
+            </p>
+          )}
 
-        <label htmlFor="phone" style={{color: 'black'}}>Enter your phone number:</label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={phone}
-          onChange={e => setPhone(e.target.value)}
-          pattern="\d{10}"
-          placeholder="10 digit number"
-          required
-          style={{ width: '100%', padding: '10px', margin: '8px 0', borderRadius: '5px', border: '1px solid #ccc',color: 'grey'  }}
-        />
+          <label htmlFor="name" className="block text-white mb-1">
+            Your Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder="Enter your name"
+            className="w-full p-4 mb-4 rounded-lg bg-white/10 text-white placeholder-white/60 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            required
+          />
 
-        <button
-          type="submit"
-          style={{
-            width: '100%',
-            padding: '10px',
-            backgroundColor: '#007bff',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            fontSize: '16px',
-            cursor: 'pointer',
-          }}
-        >
-          Login
-        </button>
-      </form>
+          <label htmlFor="phone" className="block text-white mb-1">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            value={phone}
+            onChange={e => setPhone(e.target.value)}
+            placeholder="10 digit number"
+            pattern="\d{10}"
+            className="w-full p-4 mb-6 rounded-lg bg-white/10 text-white placeholder-white/60 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            required
+          />
+
+          <button
+            type="submit"
+            className="w-full py-3 rounded-lg text-lg font-bold bg-pink-600 hover:bg-pink-700 text-white transition-all duration-300"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
