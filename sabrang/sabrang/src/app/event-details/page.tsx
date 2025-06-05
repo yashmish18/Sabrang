@@ -18,7 +18,7 @@ export default function EventDetailsPage() {
         <section className="bg-white/5 p-6 rounded-2xl shadow-lg border border-white/10 backdrop-blur-md">
           <h2 className="text-2xl font-bold text-green-400 mb-4">📈 Seal the Deal – Market & Stock Trading</h2>
           <p className="text-white/90 text-lg leading-relaxed">
-            Step into the world of high-stakes trading at <strong>Seal the Deal</strong> – the market and stock trading event at <span className="text-pink-400 font-semibold">#Sabrang2024</span>! 💹 Test your financial savvy and strategic thinking for a chance to win a prize pool of <strong>₹4,500</strong>! Whether you're a trading pro or a beginner, this is your moment to make your best moves. Stay tuned for updates and get ready to strike it rich! 🔥💰
+            Step into the world of high-stakes trading at <strong>Seal the Deal</strong> – the market and stock trading event at <span className="text-pink-400 font-semibold">#Sabrang2024</span>! 💹 Test your financial savvy and strategic thinking for a chance to win a prize pool of <strong>₹4,500</strong>! Whether you&apos;re a trading pro or a beginner, this is your moment to make your best moves. Stay tuned for updates and get ready to strike it rich! 🔥💰
           </p>
         </section>
       </div>
